@@ -239,7 +239,7 @@ func GetTargets(context *generator.Context, args *args.Args) []generator.Target 
 func factoryTarget(outputDirBase, outputPkgBase string, boilerplate []byte, groupGoNames, pluralExceptions map[string]string, groupVersions map[string]clientgentypes.GroupVersions, clientSetPackage string,
 	typesForGroupVersion map[clientgentypes.GroupVersion][]*types.Type) generator.Target {
 	return &generator.SimpleTarget{
-		PkgName:       path.Base(outputDirBase),
+		PkgName:       strings.ReplaceAll(path.Base(outputDirBase), "-", ""),
 		PkgPath:       outputPkgBase,
 		PkgDir:        outputDirBase,
 		HeaderComment: boilerplate,
